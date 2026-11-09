@@ -7,7 +7,7 @@ No accounts, database, analytics, recording, or permanent media storage. The ser
 ## Repository
 
 ```text
-frontend/                 Vite/React app; deploy this to Vercel
+frontend/                 Vite/React app; deploy to GitHub Pages or Vercel
   src/lib/booth.ts         session lifecycle and UI state
   src/lib/signaling.ts     WebSocket membership and reconnects
   src/lib/peer.ts          RTCPeerConnection and media tracks
@@ -90,7 +90,37 @@ See both `.env.example` files. Never commit real `.env` files.
 | `TURN_TTL_SECONDS`   | Signaling      | Expiring credential lifetime, 7200–86400, default 10800 seconds.                                                                 |
 | `TRUST_PROXY`        | Signaling      | Default false. Set true only behind a trusted proxy which overwrites `X-Forwarded-For`; otherwise IP rate limits can be spoofed. |
 
-## Frontend deployment: Vercel
+## Frontend deployment: GitHub Pages
+
+The workflow in `.github/workflows/pages.yml` builds only the frontend and publishes
+`frontend/dist` on pushes to `main`. It sets Vite's base path from the Pages configuration,
+so scripts, styles, the favicon, and demo media work under `/TwoGetherBooth/`.
+
+1. In the GitHub repository, open **Settings > Pages** and set **Source** to **GitHub Actions**
+   (instead of **Deploy from a branch**).
+2. Commit and push these changes to `main`. Open **Actions > Deploy frontend to GitHub Pages**
+   and wait for a successful deployment. You can also use **Run workflow** after the workflow is on `main`.
+3. Open **https://charlespura.github.io/TwoGetherBooth/**.
+
+You can publish the landing page and narrated demo first without a signaling server.
+Creating/joining live booths requires the separate Node signaling service described below;
+GitHub Pages serves the static frontend only.
+
+When signaling is deployed, add a repository **Actions variable** under
+**Settings > Secrets and variables > Actions > Variables**:
+`VITE_SIGNAL_URL=wss://YOUR-SIGNAL-SERVICE.onrender.com`.
+Set the signaling service's `ALLOWED_ORIGINS` to `https://charlespura.github.io`
+(the origin excludes `/TwoGetherBooth/`). Then rerun the Pages workflow to rebuild the frontend.
+No TURN secrets belong in frontend variables. Until signaling is configured, booth actions
+show a configuration error; the landing page and demo remain available.
+
+GitHub Pages does not apply the custom response headers in `frontend/vercel.json`.
+The HTML referrer policy remains in place, but Vercel-specific CSP and other response headers
+are not supplied by this deployment.
+
+See [Vite's GitHub Pages guide](https://vite.dev/guide/static-deploy#github-pages).
+
+## Frontend deployment: Vercel (alternative)
 
 The hosting instructions were checked against official documentation on **26 October 2026**: [Vite on Vercel](https://vercel.com/docs/frameworks/frontend/vite), [Vercel WebSockets and persistent state](https://vercel.com/docs/functions/websockets), [Render WebSockets](https://render.com/docs/websocket), [Render Node deployment](https://render.com/docs/deploy-node-express-app), and [Render free instance limits](https://render.com/docs/free).
 

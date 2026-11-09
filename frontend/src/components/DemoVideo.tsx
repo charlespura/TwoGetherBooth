@@ -64,12 +64,17 @@ export function DemoVideo({ onClose }: { onClose: () => void }) {
         autoPlay
         playsInline
         preload="metadata"
-        poster="/demo/twogether-demo-poster.jpg"
+        poster={`${import.meta.env.BASE_URL}demo/twogether-demo-poster.jpg`}
         aria-label="TwoGether Booth narrated demo: create, invite, pose, and download"
         onError={() => setFailed(true)}
       >
-        <source src="/demo/twogether-demo.mp4" type="video/mp4" />
-        <track kind="captions" src="/demo/twogether-demo.en.vtt" srcLang="en" label="English" />
+        <source src={`${import.meta.env.BASE_URL}demo/twogether-demo.mp4`} type="video/mp4" />
+        <track
+          kind="captions"
+          src={`${import.meta.env.BASE_URL}demo/twogether-demo.en.vtt`}
+          srcLang="en"
+          label="English"
+        />
         Your browser does not support video playback.
       </video>
       {failed && (
@@ -86,7 +91,10 @@ export function DemoVideo({ onClose }: { onClose: () => void }) {
             <li>Both receive the same photo strip. Download the PNG to keep it.</li>
           </ol>
         </details>
-        <a href="/demo/twogether-demo.mp4" download="twogether-booth-demo.mp4">
+        <a
+          href={`${import.meta.env.BASE_URL}demo/twogether-demo.mp4`}
+          download="twogether-booth-demo.mp4"
+        >
           Download demo
         </a>
       </div>
