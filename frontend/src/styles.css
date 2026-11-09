@@ -2449,11 +2449,6 @@ input::placeholder {
   border: 1px solid #d7bdc5;
   border-radius: 50%;
 }
-.demo-trigger-note {
-  color: var(--muted);
-  font-size: 10px;
-  font-weight: 400;
-}
 .demo-modal {
   margin: auto;
   padding: 25px;
@@ -2523,9 +2518,6 @@ input::placeholder {
 @media (max-width: 520px) {
   .demo-trigger {
     margin-top: 18px;
-  }
-  .demo-trigger-note {
-    font-size: 9px;
   }
   .demo-modal {
     padding: 18px;

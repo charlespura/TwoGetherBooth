@@ -43,8 +43,8 @@ export function DemoVideo({ onClose }: { onClose: () => void }) {
     >
       <div className="demo-heading">
         <div>
-          <span className="section-eyebrow">A LITTLE LOOK INSIDE</span>
-          <h2 id="demo-title">See a memory come together.</h2>
+          <span className="section-eyebrow">HOW IT WORKS</span>
+          <h2 id="demo-title">Your first photo strip.</h2>
         </div>
         <button
           className="icon-button"
@@ -56,7 +56,7 @@ export function DemoVideo({ onClose }: { onClose: () => void }) {
         </button>
       </div>
       <p id="demo-description">
-        A narrated walkthrough with illustrated demo cameras. English voiceover, no music.
+        See how to invite someone, take three poses, and download your photo strip.
       </p>
       <video
         className="demo-video"
@@ -65,7 +65,7 @@ export function DemoVideo({ onClose }: { onClose: () => void }) {
         playsInline
         preload="metadata"
         poster={`${import.meta.env.BASE_URL}demo/twogether-demo-poster.jpg`}
-        aria-label="TwoGether Booth narrated demo: create, invite, pose, and download"
+        aria-label="How to use TwoGether Booth"
         onError={() => setFailed(true)}
       >
         <source src={`${import.meta.env.BASE_URL}demo/twogether-demo.mp4`} type="video/mp4" />

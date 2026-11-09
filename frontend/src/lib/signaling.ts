@@ -21,7 +21,7 @@ export class Signaling {
         type: 'error',
         code: 'configuration',
         message:
-          'This site needs its signaling server URL configured. Set VITE_SIGNAL_URL and redeploy.',
+          'Live booths aren’t available yet. You can watch the demo from the home page.',
       });
       return;
     }
@@ -32,7 +32,7 @@ export class Signaling {
       this.event({
         type: 'error',
         code: 'configuration',
-        message: 'The signaling URL is invalid. Configure a ws:// or wss:// address.',
+        message: 'The booth connection is unavailable. Please try again later.',
       });
       return;
     }
@@ -46,7 +46,7 @@ export class Signaling {
       this.event({
         type: 'error',
         code: 'configuration',
-        message: 'Use a secure wss:// signaling URL for this HTTPS site.',
+        message: 'The booth could not connect securely. Please try again later.',
       });
       return;
     }
@@ -108,7 +108,7 @@ export class Signaling {
           type: 'error',
           code: 'connection',
           message:
-            'The booth server could not be reached. Check your connection and retry. Reconnection lasts up to 30 seconds; a server restart expires the booth.',
+            'Couldn’t connect to the booth. Check your internet connection and retry. If the booth has ended, create a new one.',
         });
         return;
       }

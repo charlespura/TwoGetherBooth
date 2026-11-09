@@ -158,7 +158,7 @@ function App() {
                 <span className="demo-play">
                   <Play size={13} fill="currentColor" />
                 </span>
-                Watch demo <span className="demo-trigger-note">With voiceover · No music</span>
+                Watch demo
               </button>
               <div className="hero-reassurance">
                 <span>
@@ -244,8 +244,8 @@ function App() {
             <div>
               <h2>A moment for two. A keepsake for you.</h2>
               <p>
-                No accounts. No server photo storage. Your cameras connect privately with WebRTC;
-                download or share your strip to keep it.
+                No account needed. Your photos aren’t stored on our server. Download or share your
+                strip to keep it.
               </p>
             </div>
             <Heart size={24} strokeWidth={1} />
@@ -546,11 +546,8 @@ function App() {
                 )}
               </div>
               <p className="timing-note">
-                Keep both tabs visible during capture. We coordinate the countdown, but network and
-                camera delays can cause small timing differences.
-                {host && s.clockReady
-                  ? ` Estimated network timing uncertainty: ±${Math.ceil(s.uncertainty)} ms.`
-                  : ''}
+                Keep the booth open on both screens while taking photos. Connection delays may
+                slightly affect the timing.
               </p>
             </div>
             <aside className="frame-sidebar">
