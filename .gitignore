@@ -1,0 +1,12 @@
+node_modules/
+.npm-cache/
+dist/
+.env
+.env.*
+!.env.example
+*.local
+.vercel/
+test-results/
+playwright-report/
+*.log
+.demo-work/

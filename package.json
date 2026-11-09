@@ -1,0 +1,38 @@
+{
+  "name": "twogether-booth",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "frontend",
+    "signaling",
+    "shared"
+  ],
+  "scripts": {
+    "demo:record": "node scripts/create-demo.mjs",
+    "demo:render": "node scripts/render-demo.mjs",
+    "dev": "concurrently -n web,signal -c magenta,cyan \"npm run dev -w frontend\" \"npm run dev -w signaling\"",
+    "build": "npm run build -w frontend && npm run build -w signaling",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "eslint frontend/src signaling/src shared/src",
+    "test": "vitest run",
+    "test:browser": "npm run build -w signaling && playwright test",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^26.6.5",
+    "concurrently": "^10.0.6",
+    "eslint": "^10.13.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.13.0",
+    "prettier": "^3.9.10",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.0",
+    "vitest": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}
