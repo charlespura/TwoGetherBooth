@@ -1,8 +1,33 @@
 # TwoGether Booth
 
-**Different places. One photo.** A private, temporary photobooth for two people, built with React, strict TypeScript, Vite, Tailwind CSS, WebRTC, Canvas, and a separate Node.js WebSocket signaling service.
+**Different places. One photo.** A private photobooth for two people. Share an invitation, connect your cameras, and take a three-photo strip together. Both people receive the same PNG to download.
 
-No accounts, database, analytics, recording, or permanent media storage. The server holds room membership and ephemeral signaling state in memory. Each browser captures its own camera image, and the host composes a canonical three-row PNG with both partners beside one another. That exact PNG is transferred to the guest and verified with SHA-256.
+No accounts or permanent media storage. Built with React, TypeScript, Vite, WebRTC, and a separate WebSocket signaling service.
+
+## A look inside
+
+![TwoGether Booth home page](docs/images/home.jpg)
+
+![Finished photo strip with download and sharing controls](docs/images/photo-strip.jpg)
+
+Screenshots use the demo's illustrated cameras.
+
+## Install as an app
+
+On the deployed HTTPS site, use your browser's **Install app** option. On iPhone or iPad, open the site in Safari and choose **Share > Add to Home Screen**. Installation availability depends on the browser.
+
+The production build includes a web app manifest, app icons, and a service worker. After the first online visit, the app shell can open offline. Joining a booth, connecting cameras with a partner, and watching the demo require a connection. Photos, invitation URLs, signaling traffic, and demo videos are never saved in the offline cache.
+
+Updates take effect after all open app windows and tabs close and you reopen the app, so an active booth is not reloaded. PWA support runs in production builds only; localhost is supported for testing. The manifest and worker also support the GitHub Pages repository subpath.
+
+To try the production app locally:
+
+```powershell
+npm.cmd run build
+npm.cmd run preview -w frontend
+```
+
+Open the preview URL once while online before checking offline loading. Run the signaling service separately to use a live booth.
 
 ## Repository
 
